@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechFormation | Accompagnement Informatique Sénior - Ouest Lyonnais</title>
+    <style>
+        /* RESET & BASE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 18px;
+            line-height: 1.7;
+            color: #333;
+            background-color: #f8f9fa;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        h1, h2, h3 {
+            color: #2c5aa0;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        h1 { font-size: 2.8rem; }
+        h2 { font-size: 2.2rem; border-bottom: 4px solid #4CAF50; padding-bottom: 10px; margin-top: 2.5rem;}
+        h3 { font-size: 1.6rem; color: #4CAF50; }
+        p { margin-bottom: 1.2rem; }
+        a { color: #2c5aa0; text-decoration: none; }
+        a:hover { text-decoration: underline; color: #1e3d6f; }
+        .container { width: 100%; }
+        .btn {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 18px 35px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            margin: 10px 5px;
+            min-width: 220px;
+        }
+        .btn:hover {
+            background-color: #3d8b40;
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+        .btn-secondary {
+            background-color: #2c5aa0;
+        }
+        .btn-secondary:hover { background-color: #1e3d6f; }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, #2c5aa0 0%, #1e3d6f 100%);
+            color: white;
+            padding: 1.5rem 0;
+            border-radius: 0 0 12px 12px;
+            margin-bottom: 2rem;
+        }
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-align: center;
+            color: white;
+        }
+        .logo span { color: #4CAF50; }
+        .slogan {
+            text-align: center;
+            font-size: 1.3rem;
+            color: #d1e3ff;
+            margin-top: 0.5rem;
+        }
+
+        /* NAV */
+        nav {
+            background-color: #e9f5e9;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 25px 0;
+        }
+        nav ul {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            list-style: none;
+        }
+        nav li { margin: 0 20px; }
+        nav a {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2c5aa0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        nav a:hover {
+            background-color: #d4edda;
+            text-decoration: none;
+        }
+
+        /* HERO */
+        .hero {
+            text-align: center;
+            padding: 2.5rem 1rem;
+            background-color: #e6f0ff;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+        }
+        .hero h1 { color: #1e3d6f; }
+
+        /* CONTENT SECTIONS */
+        section {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 3rem;
+        }
+        .highlight {
+            background-color: #f0f9ff;
+            padding: 1.5rem;
+            border-left: 5px solid #2c5aa0;
+            border-radius: 5px;
+            margin: 1.5rem 0;
+        }
+
+        /* ABOUT */
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            margin-top: 1.5rem;
+        }
+        .profile-img {
+            flex-shrink: 0;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #2c5aa0, #4CAF50);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            font-weight: bold;
+        }
+        .profile-text { flex-grow: 1; }
+
+        /* SERVICES */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .service-card {
+            background: #f8f9ff;
+            padding: 2rem;
+            border-radius: 10px;
+            border-top: 6px solid #4CAF50;
+            transition: transform 0.3s ease;
+        }
+        .service-card:hover { transform: translateY(-5px); }
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* TESTIMONIALS */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .testimonial-card {
+            background: #e9f5e9;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 6px solid #2c5aa0;
+        }
+        .client {
+            font-weight: bold;
+            color: #1e3d6f;
+            margin-top: 1rem;
+            display: block;
+        }
+        .client-age {
+            color: #666;
+            font-weight: normal;
+        }
+
+        /* CITIES */
+        .cities {
+            background-color: #f0f9ff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+        }
+        .city-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 1rem;
+        }
+        .city-tag {
+            background-color: #d4edda;
+            color: #1e3d6f;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+
+        /* CONTACT */
+        .contact-info {
+            background: #e6f0ff;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 1.5rem;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.2rem;
+            font-size: 1.2rem;
+        }
+        .contact-icon {
+            font-size: 1.8rem;
+            margin-right: 15px;
+            color: #2c5aa0;
+            min-width: 40px;
+        }
+
+        /* FLOATING BUBBLE */
+        .message-bubble {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #4CAF50;
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .message-bubble:hover {
+            background-color: #3d8b40;
+            transform: scale(1.1);
+            text-decoration: none;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: #1e3d6f;
+            color: white;
+            border-radius: 12px 12px 0 0;
+            margin-top: 3rem;
+        }
+        footer a { color: #d1e3ff; }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            body { font-size: 17px; padding: 0 15px; }
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+            .profile { flex-direction: column; text-align: center; }
+            .profile-img { width: 150px; height: 150px; font-size: 3rem; }
+            nav ul { flex-direction: column; align-items: center; gap: 10px; }
+            .btn { display: block; width: 90%; max-width: 300px; margin: 10px auto; }
+            .message-bubble { bottom: 20px; right: 20px; width: 60px; height: 60px; font-size: 1.7rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <header>
+            <div class="logo">Tech<span>Formation</span></div>
+            <p class="slogan">L'informatique sénior, simplifiée chez vous</p>
+        </header>
+
+        <!-- NAV -->
+        <nav>
+            <ul>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">Qui suis-je ?</a></li>
+                <li><a href="#testimonials">Avis</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- HERO -->
+        <section class="hero">
+            <h1>Reprenez le contrôle de votre ordinateur, tablette ou téléphone</h1>
+            <p style="font-size: 1.3rem; max-width: 800px; margin: 1.5rem auto;">Des cours particuliers à domicile, adaptés à votre rythme, sur l'Ouest Lyonnais. Apprenez sans stress, avec un professionnel patient et pédagogue.</p>
+            <a href="#contact" class="btn">Prendre contact</a>
+            <a href="tel:0776624215" class="btn btn-secondary">Appeler le 07 76 62 42 15</a>
+        </section>
+
+        <!-- SERVICES -->
+        <section id="services">
+            <h2>Ce que je vous propose</h2>
+            <p>Je me déplace à votre domicile pour des séances sur mesure, en fonction de vos besoins réels.</p>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <h3>Windows de A à Z</h3>
+                    <p>Je vous apprends à utiliser votre ordinateur Windows : bureau, fichiers, paramètres, navigation internet, gestion des mails, impression.</p>
+                    <ul style="padding-left: 1.5rem; margin-top: 1rem;">
+                        <li>Organiser ses photos et documents</li>
+                        <li>Naviguer sur Internet en sécurité</li>
+                        <li>Utiliser la messagerie (écrire, répondre, pièces jointes)</li>
+                        <li>Résoudre les problèmes courants</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3>Smartphone & Tablette</h3>
+                    <p>Maîtrisez votre téléphone ou tablette Android/iOS : applications, photos, appels vidéo, messages, paramètres essentiels.</p>
+                    <ul style="padding-left: 1.5rem; margin-top: 1rem;">
+                        <li>Passer des appels vidéo (WhatsApp, FaceTime)</li>
+                        <li>Prendre, sauvegarder et partager des photos</li>
+                        <li>Installer et utiliser des applications utiles</li>
+                        <li>Se protéger des arnaques téléphoniques</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Sécurité & Dépannage</h3>
+                    <p>Protégez-vous en ligne et résolvez les problèmes techniques qui vous bloquent.</p>
+                    <ul style="padding-left: 1.5rem; margin-top: 1rem;">
+                        <li>Reconnaître les emails et sites frauduleux</li>
+                        <li>Créer et gérer des mots de passe sécurisés</li>
+                        <li>Nettoyer son ordinateur, le faire aller plus vite</li>
+                        <li>Sauvegarder ses données importantes</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about">
+            <h2>Votre formateur : Thomas</h2>
+            <div class="profile">
+                <div class="profile-img">T</div>
+                <div class="profile-text">
+                    <p><strong>Bonjour, je m'appelle Thomas, j'ai 27 ans et je vis dans l'Ouest Lyonnais.</strong></p>
+                    <p>Titulaire d'un baccalauréat en informatique, je travaille actuellement comme informaticien pour une banque sur Lyon. Mon métier me passionne, et j'aime particulièrement partager mes connaissances.</p>
+                    <p>J'ai constaté que de nombreuses personnes âgées se sentaient dépassées ou inquiètes face à l'informatique. Mon objectif est de vous redonner confiance et autonomie. <strong>Ma méthode est basée sur la patience, des explications claires sans jargon, et l'adaptation à votre rythme.</strong></p>
+                    <p>Je ne vous submerge pas d'informations. On avance étape par étape, en répétant si nécessaire, jusqu'à ce que vous soyez à l'aise.</p>
+
+                    <div class="cities">
+                        <h3>Je me déplace à votre domicile dans l'Ouest Lyonnais :</h3>
+                        <div class="city-list">
+                            <span class="city-tag">Craponne</span>
+                            <span class="city-tag">Brindas</span>
+                            <span class="city-tag">Vaugneray</span>
+                            <span class="city-tag">Saint-Genis-les-Ollières</span>
+                            <span class="city-tag">Charbonnières-les-Bains</span>
+                            <span class="city-tag">Tassin-la-Demi-Lune</span>
+                            <span class="city-tag">Francheville</span>
+                            <span class="city-tag">Marcy-l'Étoile</span>
+                            <span class="city-tag">La Tour-de-Salvagny</span>
+                            <span class="city-tag">Lentilly</span>
+                            <span class="city-tag">Pollionnay</span>
+                            <span class="city-tag">Grézieu-la-Varenne</span>
+                            <span class="city-tag">et toutes les communes alentours</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS -->
+        <section id="testimonials">
+            <h2>Ils m'ont fait confiance</h2>
+            <p>Voici les retours de quelques élèves que j'accompagne.</p>
+
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p><em>"Thomas est un excellent professeur, très calme et patient. J'avais peur de mon ordinateur, maintenant je fais mes démarches en ligne et j'écris à ma famille. Il explique très bien."</em></p>
+                    <span class="client">Marie D. <span class="client-age">(76 ans, Craponne)</span></span>
+                </div>
+                <div class="testimonial-card">
+                    <p><em>"Grâce à lui, je sais enfin envoyer des photos de mes petits-enfants par téléphone et faire des appels en visio. Il s'adapte vraiment à ce que je veux apprendre. Je le recommande vivement."</em></p>
+                    <span class="client">Robert G. <span class="client-age">(78 ans, Brindas)</span></span>
+                </div>
+                <div class="testimonial-card">
+                    <p><em>"Je ne pensais pas pouvoir apprendre à mon âge. Thomas a su me rassurer et avancer à mon rythme. Maintenant, je suis plus autonome et moins dépendant de mes enfants pour l'informatique."</em></p>
+                    <span class="client">Simone L. <span class="client-age">(74 ans, Vaugneray)</span></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact">
+            <h2>Comment me contacter ?</h2>
+            <p><strong>Premier appel pour échanger :</strong> Nous discutons de votre niveau, de ce que vous aimeriez apprendre à faire, et nous voyons comment organiser les séances.</p>
+
+            <div class="contact-info">
+                <h3>Mes coordonnées directes</h3>
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div>
+                        <strong>Téléphone :</strong>
+                        <a href="tel:0776624215" style="font-size: 1.4rem; font-weight: bold; display: block; margin-top: 5px;">07 76 62 42 15</a>
+                        <p>N'hésitez pas à laisser un message si je ne réponds pas, je vous rappelle rapidement.</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <div>
+                        <strong>Email :</strong>
+                        <a href="mailto:thomasbatpro@gmail.com" style="font-size: 1.2rem; display: block; margin-top: 5px;">thomasbatpro@gmail.com</a>
+                        <p>Pour les demandes détaillées ou si vous préférez écrire.</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div>
+                        <strong>Zone d'intervention :</strong>
+                        <p>Je me déplace à votre domicile dans tout l'Ouest Lyonnais. La première prise de contact se fait par téléphone ou email.</p>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2.5rem;">
+                    <a href="tel:0776624215" class="btn">Appeler maintenant</a>
+                    <a href="mailto:thomasbatpro@gmail.com?subject=Demande%20de%20renseignement%20TechFormation" class="btn btn-secondary">Envoyer un email</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FLOATING MESSAGE BUBBLE -->
+        <a href="sms:0776624215?body=Bonjour%20Thomas,%20je%20suis%20intéressé%20pour%20apprendre%20des%20notions%20sur%20mon%20ordinateur.%20Merci%20de%20me%20rappeler%20pour%20convenir%20d'une%20séance." class="message-bubble" title="Envoyer un SMS rapide">
+            💬
+        </a>
+
+        <!-- FOOTER -->
+        <footer>
+            <p><strong>TechFormation - Thomas</strong><br>
+            Accompagnement informatique à domicile pour seniors | Ouest Lyonnais</p>
+            <p>Téléphone : <a href="tel:0776624215">07 76 62 42 15</a> | Email : <a href="mailto:thomasbatpro@gmail.com">thomasbatpro@gmail.com</a></p>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: #ccc;">© 2023 TechFormation. Tous droits réservés.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Smooth scrolling pour les ancres
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Confirmation pour le bubble SMS
+        document.querySelector('.message-bubble').addEventListener('click', function(e) {
+            if(!confirm("Voulez-vous ouvrir votre application de messagerie pour envoyer un SMS pré-rempli à Thomas ?")) {
+                e.preventDefault();
+            }
+        });
+
+        // Simple effet d'apparition des cartes
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .testimonial-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
